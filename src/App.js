@@ -11,6 +11,7 @@ import ContactList from './components/ContactList';
 import Filter from './components/Filter/';
 import { getVisibleContacts } from './store/contacts/selectors';
 import { getContacts } from './store/contacts/actions';
+import UserMenu from './components/UserMenu/UserMenu';
 
 export default function App() {
     const contacts = useSelector(getVisibleContacts);
@@ -21,7 +22,7 @@ export default function App() {
 
     return (
         <div className="App">
-            <h1>Phonebook</h1>
+            <UserMenu email={'ssgvgsh@hbdhwe.kjvbwek'} />
             <ContactForm />
             <h2>Contacts</h2>
             <Filter title={'Find contacts by name'} />
