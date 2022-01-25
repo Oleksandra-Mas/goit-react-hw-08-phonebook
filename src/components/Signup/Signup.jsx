@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { addContact } from '../../store/contacts/actions';
 import { authActions } from '../../store/auth';
 
 const FormWrapper = styled.form`

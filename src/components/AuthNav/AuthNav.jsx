@@ -6,7 +6,7 @@ export default function AuthNav() {
     return (
         <>
             <Navbar.Text>
-                <NavLink end to="/signup">
+                <NavLink end to="/register">
                     Signup
                 </NavLink>
             </Navbar.Text>

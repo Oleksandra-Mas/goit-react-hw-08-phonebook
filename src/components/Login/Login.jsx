@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { addContact } from '../../store/contacts/actions';
+import { authActions } from '../../store/auth';
 
 const FormWrapper = styled.form`
     display: flex;
@@ -48,12 +48,16 @@ export default function LoginForm() {
             return toast(`Please enter valid email`);
         }
         if (password.length < 3) {
-            return toast(`Password shpuld have at least 3 symbols`);
+            return toast(`Password should have at least 3 symbols`);
         }
-        // dispatch(addContact({ name }));
-        // reset();
+        dispatch(authActions.logIn({ email, password }));
+        reset();
     };
 
+    const reset = () => {
+        setEmail('');
+        setPassword('');
+    };
     return (
         <>
             <h1>Login page</h1>
@@ -82,7 +86,7 @@ export default function LoginForm() {
                     />
                 </Form.Label>
                 <Button variant="outline-dark" type="sumbit">
-                    Signup
+                    Login
                 </Button>
             </FormWrapper>
         </>

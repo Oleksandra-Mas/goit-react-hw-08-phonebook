@@ -1,8 +1,14 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 
-export default function UserMenu({ email }) {
+import { getEmail } from '../../store/auth/selectors';
+import { authActions } from '../../store/auth';
+
+export default function UserMenu() {
+    const email = useSelector(getEmail);
+    const dispatch = useDispatch();
     return (
         <>
             <Navbar.Text>
@@ -12,7 +18,7 @@ export default function UserMenu({ email }) {
                 <Button
                     variant="outline-light"
                     type="button"
-                    onClick={() => {}}
+                    onClick={() => dispatch(authActions.logOut())}
                 >
                     Logout
                 </Button>

@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Alert } from 'react-bootstrap';
 
 import ContactForm from '../../components/ContactForm';
@@ -12,7 +13,7 @@ export default function Contacts() {
 
     const dispatch = useDispatch();
 
-    // useEffect(() => dispatch(getContacts()), [dispatch]);
+    useEffect(() => dispatch(getContacts()), [dispatch]);
     return (
         <>
             <ContactForm />

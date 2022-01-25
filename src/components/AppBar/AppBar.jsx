@@ -7,7 +7,7 @@ import { getIsLoggedIn } from '../../store/auth/selectors';
 import AuthNav from '../AuthNav/AuthNav';
 import UserMenu from '../UserMenu/UserMenu';
 
-export default function AppBar({ email }) {
+export default function AppBar() {
     const isLoggedIn = useSelector(getIsLoggedIn);
     return (
         <Navbar className={styles.header} id="header" bg="dark" variant="dark">
@@ -17,7 +17,7 @@ export default function AppBar({ email }) {
                     <AuthNav />
                 </>
             ) : (
-                <UserMenu email={email} />
+                <UserMenu />
             )}
         </Navbar>
     );
