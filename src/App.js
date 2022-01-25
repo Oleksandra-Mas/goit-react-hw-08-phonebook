@@ -12,7 +12,7 @@ import SignupForm from './components/Signup/Signup';
 import LoginForm from './components/Login/Login';
 import Contacts from './components/Contacts/Contacts';
 import Error from './components/Error/Error';
-// import PublicRoute from './components/PublicRoute/PublicRoute';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -22,8 +22,14 @@ export default function App() {
         <div className="App">
             <AppBar />
             <Routes>
-                <Route path="register" element={<SignupForm />} />
-                <Route path="login" element={<LoginForm />} />
+                <Route
+                    path="register"
+                    element={<PublicRoute component={SignupForm} restricted />}
+                />
+                <Route
+                    path="login"
+                    element={<PublicRoute component={LoginForm} restricted />}
+                />
                 <Route path="contacts" element={<Contacts />} />
                 <Route path="*" element={<Error />} />
             </Routes>
