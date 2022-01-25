@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,7 +19,9 @@ export default function App() {
     const dispatch = useDispatch();
     useEffect(() => dispatch(authActions.fetchCurrentUser()), [dispatch]);
 
-    return (
+    const isFetchingCurrentUser = useSelector(state => state.isFetchingCurrent);
+
+    return !isFetchingCurrentUser ? (
         <div className="App">
             <AppBar />
             <Routes>
@@ -39,5 +41,7 @@ export default function App() {
             </Routes>
             <ToastContainer />
         </div>
+    ) : (
+        <div>Loading...</div>
     );
 }
