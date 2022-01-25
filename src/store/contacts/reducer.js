@@ -13,8 +13,8 @@ const filter = createReducer('', {
 const items = createReducer([], {
     [getContacts.fulfilled]: (_, action) => action.payload,
     [removeContact.fulfilled]: (state, { payload }) => {
-        const { id } = payload;
-        return state.filter(contact => contact.id !== id);
+        console.log();
+        return state.filter(contact => contact.id !== payload);
     },
     [addContact.fulfilled]: (state, { payload }) => {
         const newState = [...state, payload];

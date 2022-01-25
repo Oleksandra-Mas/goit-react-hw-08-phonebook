@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import shortid from 'shortid';
 import { Button, Form } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -24,6 +25,7 @@ export default function LoginForm() {
     const emailId = shortid.generate();
     const passwordId = shortid.generate();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleInputChange = event => {
         const { value, name } = event.target;

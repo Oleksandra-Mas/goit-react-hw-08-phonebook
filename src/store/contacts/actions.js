@@ -25,8 +25,8 @@ export const removeContact = createAsyncThunk(
     ActionType.DELETE_CONTACT,
     async (id, { rejectWithValue }) => {
         try {
-            const contacts = await deleteContact(id);
-            return contacts;
+            await deleteContact(id);
+            return id;
         } catch (error) {
             return rejectWithValue(error);
         }

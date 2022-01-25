@@ -97,7 +97,7 @@ export default function SignupForm() {
                 <Form.Label htmlFor={passwordId}>
                     Password
                     <Form.Control
-                        type="text"
+                        type="password"
                         name="password"
                         required
                         value={password}
