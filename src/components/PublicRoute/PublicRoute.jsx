@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { getIsLoggedIn } from '../../store/auth/selectors';
 import PropTypes from 'prop-types';
 
@@ -12,10 +12,6 @@ const PublicRoute = ({ component: Component, restricted = false }) => {
 
 PublicRoute.propTypes = {
     component: PropTypes.elementType.isRequired,
-};
-
-PublicRoute.defaultProps = {
-    location: undefined,
 };
 
 export default PublicRoute;

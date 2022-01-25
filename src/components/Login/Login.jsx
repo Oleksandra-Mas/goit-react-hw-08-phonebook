@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import shortid from 'shortid';
 import { Button, Form } from 'react-bootstrap';
 import styled from 'styled-components';
@@ -25,7 +24,6 @@ export default function LoginForm() {
     const emailId = shortid.generate();
     const passwordId = shortid.generate();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleInputChange = event => {
         const { value, name } = event.target;
@@ -44,6 +42,7 @@ export default function LoginForm() {
     const handleSubmit = event => {
         event.preventDefault();
         let re =
+            // eslint-disable-next-line no-useless-escape
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!re.test(email)) {
@@ -79,7 +78,7 @@ export default function LoginForm() {
                 <Form.Label htmlFor={passwordId}>
                     Password
                     <Form.Control
-                        type="text"
+                        type="password"
                         name="password"
                         required
                         value={password}

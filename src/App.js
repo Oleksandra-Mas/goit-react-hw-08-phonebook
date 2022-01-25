@@ -13,6 +13,7 @@ import LoginForm from './components/Login/Login';
 import Contacts from './components/Contacts/Contacts';
 import Error from './components/Error/Error';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -30,7 +31,10 @@ export default function App() {
                     path="login"
                     element={<PublicRoute component={LoginForm} restricted />}
                 />
-                <Route path="contacts" element={<Contacts />} />
+                <Route
+                    path="contacts"
+                    element={<PrivateRoute component={Contacts} />}
+                />
                 <Route path="*" element={<Error />} />
             </Routes>
             <ToastContainer />
