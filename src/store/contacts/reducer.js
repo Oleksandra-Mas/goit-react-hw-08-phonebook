@@ -13,10 +13,11 @@ const filter = createReducer('', {
 const items = createReducer([], {
     [getContacts.fulfilled]: (_, action) => action.payload,
     [removeContact.fulfilled]: (state, { payload }) => {
-        console.log();
+        if (!payload) return;
         return state.filter(contact => contact.id !== payload);
     },
     [addContact.fulfilled]: (state, { payload }) => {
+        if (!payload) return;
         const newState = [...state, payload];
         return newState;
     },

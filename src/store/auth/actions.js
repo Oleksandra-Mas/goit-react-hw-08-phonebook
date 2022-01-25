@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import {
     registerUser,
@@ -12,7 +13,10 @@ export const register = createAsyncThunk('auth/register', async credentials => {
         const data = await registerUser(credentials);
         return data;
     } catch (error) {
-        console.error(error.message);
+        if (error.message.includes('400')) {
+            toast('Error creating user');
+        }
+        console.log(error.message);
     }
 });
 
@@ -21,7 +25,10 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
         const data = await loginUser(credentials);
         return data;
     } catch (error) {
-        console.error(error.message);
+        if (error.message.includes('400')) {
+            toast('Login error');
+        }
+        console.log(error.message);
     }
 });
 
@@ -29,7 +36,10 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     try {
         await logoutUser();
     } catch (error) {
-        console.error(error.message);
+        if (error.message.includes('401')) {
+            toast('Logout error');
+        }
+        console.log(error.message);
     }
 });
 
@@ -47,7 +57,10 @@ export const fetchCurrentUser = createAsyncThunk(
             const data = await getCurrentUser(persistedToken);
             return data;
         } catch (error) {
-            console.error(error.message);
+            if (error.message.includes('401')) {
+                toast('Error getting current user');
+            }
+            console.log(error.message);
         }
     },
 );

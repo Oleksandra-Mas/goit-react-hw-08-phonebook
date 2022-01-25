@@ -12,21 +12,25 @@ const authSlice = createSlice({
     initialState,
     extraReducers: {
         [register.fulfilled](state, action) {
+            if (!action.payload) return;
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
         },
         [logIn.fulfilled](state, action) {
+            if (!action.payload) return;
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
         },
         [logOut.fulfilled](state, action) {
+            if (!action.payload) return;
             state.user = { name: null, email: null };
             state.token = null;
             state.isLoggedIn = false;
         },
         [fetchCurrentUser.fulfilled](state, action) {
+            if (!action.payload) return;
             state.user = action.payload;
             state.isLoggedIn = true;
         },
