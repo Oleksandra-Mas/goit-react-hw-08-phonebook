@@ -4,11 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 
-import { getEmail } from '../../store/auth/selectors';
+import { getUsername } from '../../store/auth/selectors';
 import { authActions } from '../../store/auth';
 
 export default function UserMenu() {
-    const email = useSelector(getEmail);
+    const username = useSelector(getUsername);
     const dispatch = useDispatch();
     return (
         <>
@@ -17,8 +17,7 @@ export default function UserMenu() {
                 Contacts
             </NavLink>
         </Navbar.Text>
-            <Navbar.Text>
-                <a href={'mailto:' + email}>{email}</a>
+            <Navbar.Text>{username}
             </Navbar.Text>
             <Navbar.Text>
                 <Button
