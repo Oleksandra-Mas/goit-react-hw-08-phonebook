@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -11,9 +11,9 @@ import AppBar from './components/AppBar/AppBar';
 import SignupForm from './components/Signup/Signup';
 import LoginForm from './components/Login/Login';
 import Contacts from './components/Contacts/Contacts';
-import Error from './components/Error/Error';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import About from './components/About/About';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -37,7 +37,8 @@ export default function App() {
                     path="contacts"
                     element={<PrivateRoute component={Contacts} />}
                 />
-                <Route path="*" element={<Error />} />
+                <Route path="/about" element={<About/>} />
+                <Route path="*" element={<Navigate to='/about' />} />
             </Routes>
             <ToastContainer />
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -11,7 +12,7 @@ export default function AppBar() {
     const isLoggedIn = useSelector(getIsLoggedIn);
     return (
         <Navbar className={styles.header} id="header" bg="dark" variant="dark">
-            <Navbar.Brand>Phonebook</Navbar.Brand>
+                <NavLink end to="/about">Phonebook</NavLink>
             {!isLoggedIn ? (
                 <>
                     <AuthNav />
