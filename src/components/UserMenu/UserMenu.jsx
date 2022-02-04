@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
+import { NavLink } from 'react-router-dom';
 
 import { getEmail } from '../../store/auth/selectors';
 import { authActions } from '../../store/auth';
@@ -11,6 +12,11 @@ export default function UserMenu() {
     const dispatch = useDispatch();
     return (
         <>
+        <Navbar.Text>
+            <NavLink end to="/contacts">
+                Contacts
+            </NavLink>
+        </Navbar.Text>
             <Navbar.Text>
                 <a href={'mailto:' + email}>{email}</a>
             </Navbar.Text>
